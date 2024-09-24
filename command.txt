@@ -1,0 +1,33 @@
+docker ps  | โชว์ตัวที่ทำงานอยู่
+docker ps --all | โชว์ทุกตัวที่มี
+
+docker run [name] | รัน 
+docker run busybox [command] | สร้างค่า command
+docker run busybox ping google.com | ทำการปิงไปที่ google.com
+
+docker pull |
+docker create |
+docker rm |
+
+docker system prune !! | ลบทุกอย่างออกหมด !!
+
+docker exec -it  [ID] sh
+docker exec -it  [ID] bash
+
+cd usr/share/nginx/html |
+cat index.html |
+
+docker run -p [port] nginx | ใส่ port ที่เราต้องการใช้
+docker run -p 80:80 nginx
+docker run -p 9000:80 nginx | สร้าง localhost อยู่ที่ 9000 [http://localhost:9000/]
+docker run -d -p 4000:80 nginx | สร้าง localhost เหมือนกันเเต่ไม่ค้างหน้า run
+docker run --name [name] -d -p 3000:80 nginx | การตั้งชื่อ
+
+docker logs f441fc5ec109e4370ee15e51f0a7fb476579b7952da8c6bef6f29fdfc59574a5
+docker logs -f f441fc5ec109e4370ee15e51f0a7fb476579b7952da8c6bef6f29fdfc59574a5
+
+docker system info | แสดงข้อมูลทั้งหมด 
+docker system df | แสดง Images ทั้งหมด 
+docker Images | แสดงรูปภาพทั้งหมด
+docker image inspect [nginx] | ดูโครงสร้างของ image
+docker image rm [hello-world] | ลบ image
