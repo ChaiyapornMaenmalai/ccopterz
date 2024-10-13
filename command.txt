@@ -1,66 +1,12 @@
-docker ps  | โชว์ตัวที่ทำงานอยู่
-docker ps --all | โชว์ทุกตัวที่มี
+docker pull imsuriyapi/todo-app:v4
+kubectl apply -f .\sample-pod.yml
 
-docker run [name] | รัน 
-docker run busybox [command] | สร้างค่า command
-docker run busybox ping google.com | ทำการปิงไปที่ google.com
+kubectl get all //เช็ค
+kubectl logs
 
-docker pull |
-docker create |
-docker rm |
+kubectl delete all --all ลบทิ้ง
 
-docker system prune !! | ลบทุกอย่างออกหมด !!
+http://localhost:30002/api/health
+http://localhost:30002/api/todo
 
-docker exec -it  [ID] sh
-docker exec -it  [ID] bash
-
-cd usr/share/nginx/html |
-cat index.html |
-
-docker run -p [port] nginx | ใส่ port ที่เราต้องการใช้
-docker run -p 80:80 nginx
-docker run -p 9000:80 nginx | สร้าง localhost อยู่ที่ 9000 [http://localhost:9000/]
-docker run -d -p 4000:80 nginx | สร้าง localhost เหมือนกันเเต่ไม่ค้างหน้า run
-docker run --name [name] -d -p 3000:80 nginx | การตั้งชื่อ
-
-docker logs f441fc5ec109e4370ee15e51f0a7fb476579b7952da8c6bef6f29fdfc59574a5
-docker logs -f f441fc5ec109e4370ee15e51f0a7fb476579b7952da8c6bef6f29fdfc59574a5
-
-docker system info | แสดงข้อมูลทั้งหมด 
-docker system df | แสดง Images ทั้งหมด 
-docker Images | แสดงรูปภาพทั้งหมด
-docker image inspect [nginx] | ดูโครงสร้างของ image
-docker image rm [hello-world] | ลบ image
-
-docker network create [name] | สร้าง network
-docker run --name mysql --network wordpress -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress_db -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7
-docker run --name pma --network wordpress -p 8888:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin
-docker run -d --name wordpress --network wordpress -p 888:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress_db wordpress
-
-การเก็บข้อมูล
-1. เก็บที่ข้อมูลที่ Container
-2. Volume
-3. bindmount
-
-แบบที่ 1 
-docker exec -it pma sh
-docker exec -it pma bash
-apt-get update
-apt-get install vim
-vi a.text | กด i พิมพ์ข้อมูล กด esc ออก พิมพ์ :wq enter คือ save
-
-แบบที่ 2 
-docker volume
-docker volume create wp_volume
-docker volume create mysql_volume
-
-docker container inspect [Name]
-
-สร้างเอง
-docker volume create wp_volume
-docker volume create mysql_volume
-docker network create wordpress02    !
-
-docker run --name mysql02 --network wordpress02 -v mysql_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress02_db -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7
-docker run --name pma02 --network wordpress02 -p 8889:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin
-docker run -d --name wordpress02 --network wordpress02 -v wp_volume:var/www/html -e WORDPRESS_DB_HOST=mysql02 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress02_db -p 889:80wordpress
+docker pull mongo
